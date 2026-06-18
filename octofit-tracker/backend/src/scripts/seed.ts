@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
-import { User } from './models/User';
-import { Team } from './models/Team';
-import { Activity } from './models/Activity';
-import { Leaderboard } from './models/Leaderboard';
-import { Workout } from './models/Workout';
+import { User } from '../models/User';
+import { Team } from '../models/Team';
+import { Activity } from '../models/Activity';
+import { Leaderboard } from '../models/Leaderboard';
+import { Workout } from '../models/Workout';
 
-const MONGODB_URI = 'mongodb://localhost:27017/octofit_db';
+const MONGODB_URI = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/octofit_db';
 
 async function seedDatabase() {
+  console.log('Seed the octofit_db database with test data');
+
   await mongoose.connect(MONGODB_URI);
 
   await Promise.all([
